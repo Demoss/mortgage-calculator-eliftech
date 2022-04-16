@@ -28,7 +28,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		}
 		calc := api.Group("/calc")
 		{
-			calc.GET("/", h.GetMortgage)
+			calc.GET("", h.GetMortgage)
 		}
 	}
 

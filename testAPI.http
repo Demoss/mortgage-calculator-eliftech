@@ -1,0 +1,25 @@
+GET http://localhost:8000/api/calc?initialLoan=1000&downPayment=8000&bankName=OSCHADBANK
+Accept: application/json
+
+###
+POST http://localhost:8000/api/bank
+Content-Type: application/json
+
+{
+  "name": "ALFA",
+  "rate": 15,
+  "maxLoan": 100000,
+  "minDownPayment": 20,
+  "loanTerm": 18
+}
+
+###
+GET http://localhost:8000/api/bank/ALFA
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/bank/
+Accept: application/json
+
+###

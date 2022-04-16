@@ -5,14 +5,17 @@ import (
 	"github.com/gin-gonic/gin"
 	"mortgage-calulator-eliftech/internal/command"
 	"net/http"
+	"strconv"
 )
 
 func (h *Handler) GetMortgage(c *gin.Context) {
-	var input command.CreateMortgage
-
-	if err := c.BindJSON(&input); err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
-		return
+	initialLoan, err := strconv.Atoi(c.Query("initialLoan"))
+	downPayment, err := strconv.Atoi(c.Query("downPayment"))
+	bankName := c.Query("bankName")
+	input := command.CreateMortgage{
+		InitialLoan: initialLoan,
+		DownPayment: downPayment,
+		BankName:    bankName,
 	}
 	bank, err := h.services.Bank.GetOne(c, input.BankName)
 	if err != nil {

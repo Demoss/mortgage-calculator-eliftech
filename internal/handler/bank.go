@@ -69,11 +69,8 @@ func (h *Handler) GetAll(c *gin.Context) {
 }
 
 func (h *Handler) GetOne(c *gin.Context) {
-	var input query.ChooseBank
-	if err := c.BindJSON(&input); err != nil {
-		newErrorResponse(c, http.StatusBadRequest, err.Error())
-		return
-	}
+	name := c.Param("name")
+	input := query.ChooseBank{Name: name}
 
 	bank, err := h.services.Bank.GetOne(c, input.Name)
 	if err != nil {
