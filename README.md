@@ -7,7 +7,10 @@
 Спочатку завантажимо докер https://www.docker.com/products/docker-desktop/
 
 потім "піднімемо" локально базу даних
+
 docker run --name mortgage-calc -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=qwerty -p 5432:5432 postgres:latest 
+
+
 (якщо юзер або пароль буде інакший, то необхідно змінити його і в файлах конфігурацій config/config.yml та .env відповідно)
 
 На данному етапі база пуста
