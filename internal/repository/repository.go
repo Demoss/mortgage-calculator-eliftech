@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"github.com/jmoiron/sqlx"
+	"gorm.io/gorm"
 	"mortgage-calulator-eliftech/internal/command"
 	"mortgage-calulator-eliftech/internal/domain"
 )
@@ -23,7 +23,7 @@ type Repository struct {
 	Bank
 }
 
-func NewRepository(db *sqlx.DB) *Repository {
+func NewRepository(db *gorm.DB) *Repository {
 	return &Repository{
 		Bank: NewBankPostgres(db),
 	}

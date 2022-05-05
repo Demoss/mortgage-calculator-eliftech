@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8000/api/bank/ALFA
+GET http://localhost:8000/api/bank/PUMB
 Accept: application/json
 
 ###
@@ -23,3 +23,10 @@ GET http://localhost:8000/api/bank/
 Accept: application/json
 
 ###
+
+PUT http://localhost:8000/api/bank/PUMB
+Content-Type:application/json
+
+{
+  "rate": 20
+}

@@ -70,7 +70,8 @@ func run() error {
 		logrus.Errorf("error occured on server shutting down: %s", err.Error())
 	}
 
-	if err := db.Close(); err != nil {
+	forClose, _ := db.DB()
+	if err := forClose.Close(); err != nil {
 		logrus.Errorf("error occured on db connection close: %s", err.Error())
 	}
 	return nil
