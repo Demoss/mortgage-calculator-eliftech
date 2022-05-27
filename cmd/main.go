@@ -12,7 +12,7 @@ import (
 	"mortgage-calulator-eliftech/internal/handler"
 	"mortgage-calulator-eliftech/internal/repository"
 	"mortgage-calulator-eliftech/internal/service"
-	"mortgage-calulator-eliftech/pkg/db/postgres"
+	posgres "mortgage-calulator-eliftech/pkg/db/postgres"
 	"os"
 	"os/signal"
 	"syscall"
@@ -70,10 +70,6 @@ func run() error {
 		logrus.Errorf("error occured on server shutting down: %s", err.Error())
 	}
 
-	forClose, _ := db.DB()
-	if err := forClose.Close(); err != nil {
-		logrus.Errorf("error occured on db connection close: %s", err.Error())
-	}
 	return nil
 }
 

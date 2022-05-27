@@ -29,6 +29,7 @@ func (r *BankPostgres) CreateBank(ctx context.Context, bank domain.Bank) error {
 func (r *BankPostgres) DeleteBank(ctx context.Context, name string) error {
 	if err := r.db.WithContext(ctx).Delete(&name); err != nil {
 		errors.Is(err.Error, gorm.ErrRecordNotFound)
+		return err.Error
 	}
 
 	return nil
@@ -91,7 +92,10 @@ func (r BankPostgres) GetAll(ctx context.Context) ([]domain.Bank, error) {
 func (r *BankPostgres) GetOne(ctx context.Context, name string) (domain.Bank, error) {
 	var res domain.Bank
 
-	r.db.WithContext(ctx).Where("name = ?", name).Find(&res)
+	queryRes := r.db.WithContext(ctx).Where("name = ?", name).Find(&res)
+	if queryRes.Error != nil {
+		return domain.Bank{}, queryRes.Error
+	}
 
 	return res, nil
 

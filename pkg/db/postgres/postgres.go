@@ -32,14 +32,6 @@ func NewPostgresDB(cfg Config) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	gormSQL, err := db.DB()
-	if err != nil {
-		return nil, err
-	}
-	err = gormSQL.Ping()
-	if err != nil {
-		return nil, err
-	}
 
 	return db, nil
 }

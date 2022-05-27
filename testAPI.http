@@ -1,4 +1,4 @@
-GET http://localhost:8000/api/calc?initialLoan=1000&downPayment=8000&bankName=OSCHADBANK
+GET http://localhost:8000/api/calc?initialLoan=1000&downPayment=8000&bankName=PUMB
 Accept: application/json
 
 ###
@@ -28,5 +28,5 @@ PUT http://localhost:8000/api/bank/PUMB
 Content-Type:application/json
 
 {
-  "rate": 20
+  "rate": 101
 }
